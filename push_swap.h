@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:16:56 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/24 08:00:24 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/04 16:13:48 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void					rra(t_e *e);
 void					rrb(t_e *e);
 void					rrr(t_e *e);
 void					push_swap_calc(t_e *e);
-void					display_list(t_e *e);
+void					display_list(t_e *e, int n);
+int						test_a(t_e *e);
 
 #endif

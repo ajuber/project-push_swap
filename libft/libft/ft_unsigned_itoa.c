@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 01:23:30 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/08 04:26:37 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/04/29 12:20:37 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <string.h>
 
-static void	get_nb_char(unsigned long long n, int *size)
+static void	get_nb_char(unsigned int n, int *size)
 {
 	while (n > 0)
 	{
@@ -23,7 +23,15 @@ static void	get_nb_char(unsigned long long n, int *size)
 	}
 }
 
-char		*ft_unsigned_long_itoa(unsigned long long n)
+static char	*exception(char *result)
+{
+	if (!(result = ft_memalloc(2)))
+		return (NULL);
+	result[0] = '0';
+	return (result);
+}
+
+char		*ft_unsigned_itoa(unsigned int n)
 {
 	int		i;
 	int		size;
@@ -32,16 +40,13 @@ char		*ft_unsigned_long_itoa(unsigned long long n)
 	i = 1;
 	size = 0;
 	result = NULL;
+	if (n == 0)
+		return (exception(result));
 	get_nb_char(n, &size);
 	result = (char*)malloc(size + 1);
 	if (!result)
 		return (NULL);
 	result[size] = 0;
-	if (n == 0)
-	{
-		result[0] = '0';
-		return (result);
-	}
 	while (n > 0)
 	{
 		result[size - i] = n % 10 + '0';

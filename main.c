@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:26:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/24 10:08:55 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/04 19:23:33 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,23 @@ int				main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		ft_putendl_fd("pas de pile a trier", 2);
+		ft_putendl_fd("error", 2);
 		return (-1);
 	}
 	e.l_a = ft_create_list(argv, &e, argc);
 	e.l_b = ft_create_racine();
-	if (e.l_a == NULL || (!(ft_check_doublon(&e))))
+	if (e.l_a == NULL || e.l_b == NULL || (!(ft_check_doublon(&e))))
 	{
 		ft_putendl_fd("error", 2);
 		return (-1);
 	}
+	ft_putendl("\nListe debut\n");
+	display_list(&e, 1);
 	e.str = ft_strdup("\0");
 	push_swap_calc(&e);
+	ft_putendl("Operation effectue et liste de fin");
 	ft_putendl(e.str);
-	display_list(&e);
+	display_list(&e, 0);
 	ft_free_list_cir(e.l_a);
 	ft_free_list_cir(e.l_b);
 	ft_memdel((void **)&e.str);
