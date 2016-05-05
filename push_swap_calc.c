@@ -15,7 +15,8 @@
 void	tri_b_else(t_e *e)
 {
 	rb(e);
-	display_list(e, 1);
+	if (e->v)
+		display_list(e, 1);
 	e->str = ft_strjoin_free(e->str, e->str, " rb");
 }
 
@@ -37,7 +38,8 @@ void	tri_b(t_e *e)
 				&& tmp_b_next->n > tmp_b_previous->n))
 		{
 			pb(e);
-			display_list(e, 1);
+			if (e->v)
+				display_list(e, 1);
 			e->str = ft_strjoin_free(e->str, e->str, " pb");
 			tmp_a = e->l_a->next;
 		}
@@ -56,15 +58,18 @@ void	push_swap_calc_under(t_e *e)
 	if (tmp_a->n > tmp_b_next->n)
 	{
 		pb(e);
-		display_list(e, 1);
+		if (e->v)
+			display_list(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " pb");
 	}
 	else
 	{
 		pb(e);
-		display_list(e, 1);
+		if (e->v)
+			display_list(e, 1);
 		rb(e);
-		display_list(e, 1);
+		if (e->v)
+			display_list(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " pb rb");
 	}
 }
@@ -74,7 +79,8 @@ void	after_tri_b(t_e *e, t_list_cir *tmp_b_next, t_list_cir *tmp_b_previous)
 	while (tmp_b_next->n < tmp_b_previous->n)
 	{
 		rb(e);
-		display_list(e, 1);
+		if (e->v)
+			display_list(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " rb");
 		tmp_b_next = e->l_b->next;
 		tmp_b_previous = e->l_b->previous;
@@ -82,7 +88,8 @@ void	after_tri_b(t_e *e, t_list_cir *tmp_b_next, t_list_cir *tmp_b_previous)
 	while (tmp_b_next != e->l_b)
 	{
 		pa(e);
-		display_list(e, 1);
+		if (e->v)
+			display_list(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " pa");
 		tmp_b_next = e->l_b->next;
 	}
@@ -95,8 +102,14 @@ void	push_swap_calc(t_e *e)
 
 	if (test_a(e))
 		return ;
+	if (e->size_l == 3)
+	{
+		tri_a_and_b(e);
+		return ;
+	}
 	pb(e);
-	display_list(e, 1);
+	if (e->v)
+		display_list(e, 1);
 	e->str = ft_strjoin_free(e->str, e->str, "pb");
 	push_swap_calc_under(e);
 	tri_b(e);

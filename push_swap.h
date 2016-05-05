@@ -27,6 +27,8 @@ typedef struct			s_e
 	t_list_cir			*l_a;
 	t_list_cir			*l_b;
 	char				*str;
+	int					v;
+	int					size_l;
 }						t_e;
 
 t_list_cir				*ft_create_racine(void);
@@ -46,5 +48,6 @@ void					rrr(t_e *e);
 void					push_swap_calc(t_e *e);
 void					display_list(t_e *e, int n);
 int						test_a(t_e *e);
+void					tri_a_and_b(t_e *e);
 
 #endif

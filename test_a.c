@@ -20,7 +20,8 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 		while (nb_rot-- > 0)
 		{
 			ra(e);
-			display_list(e, 1);
+			if (e->v)
+				display_list(e, 1);
 			if (nb_rot + 1 != comp)
 				e->str = ft_strjoin_free(e->str, e->str, " ");
 			e->str = ft_strjoin_free(e->str, e->str, "ra");
@@ -32,7 +33,8 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 		while (nb_rot_rev-- > 0)
 		{
 			rra(e);
-			display_list(e, 1);
+			if (e->v)
+				display_list(e, 1);
 			if (nb_rot_rev + 1 != comp)
 				e->str = ft_strjoin_free(e->str, e->str, " ");
 			e->str = ft_strjoin_free(e->str, e->str, "rra");

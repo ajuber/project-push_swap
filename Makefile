@@ -25,7 +25,8 @@ SRC_C=	main.c\
 		ft_swap.c\
 		push_swap_calc.c\
 		display_list.c\
-		test_a.c
+		test_a.c\
+		tri_a_and_b.c
 
 SRC_O=		$(SRC_C:.c=.o)
 

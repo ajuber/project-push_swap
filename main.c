@@ -12,13 +12,22 @@
 
 #include "push_swap.h"
 
+void			ft_option(char **argv, t_e *e)
+{
+	if (ft_strcmp("-v", argv[1]) == 0)
+		e->v = 1;
+	else
+		e->v = 0;
+}
+
 t_list_cir		*ft_create_list(char **argv, t_e *e, int argc)
 {
 	int		i;
 	long	nb;
 	int		j;
 
-	i = 1;
+	ft_option(argv, e);
+	i = 1 + e->v;
 	if (!(e->l_a = ft_create_racine()))
 		return (NULL);
 	while (i < argc)
@@ -38,6 +47,7 @@ t_list_cir		*ft_create_list(char **argv, t_e *e, int argc)
 		push_back_list(e->l_a, nb);
 		i++;
 	}
+	e->size_l = i - 1 - e->v;
 	return (e->l_a);
 }
 
@@ -67,7 +77,7 @@ int				main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		ft_putendl_fd("error", 2);
+		ft_putendl_fd("", 2);
 		return (-1);
 	}
 	e.l_a = ft_create_list(argv, &e, argc);
@@ -77,13 +87,18 @@ int				main(int argc, char **argv)
 		ft_putendl_fd("error", 2);
 		return (-1);
 	}
-	ft_putendl("\nListe debut\n");
-	display_list(&e, 1);
+	if (e.v)
+	{
+		ft_putendl("\nListe debut\n");
+		display_list(&e, 1);
+	}
 	e.str = ft_strdup("\0");
 	push_swap_calc(&e);
-	ft_putendl("Operation effectue et liste de fin");
+	if (e.v)
+		ft_putendl("Operation effectue et liste de fin");
 	ft_putendl(e.str);
-	display_list(&e, 0);
+	if (e.v)
+		display_list(&e, 0);
 	ft_free_list_cir(e.l_a);
 	ft_free_list_cir(e.l_b);
 	ft_memdel((void **)&e.str);
