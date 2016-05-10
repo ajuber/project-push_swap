@@ -51,7 +51,11 @@ void					push_swap_calc(t_e *e);
 void					display_list(t_e *e, int n);
 int						test_a(t_e *e);
 void					tri_a_and_b(t_e *e);
+void					tri_b_and_a(t_e *e);
 void					if_display(t_e *e, int n);
 int						test_swap_a(t_e *e);
+void					tri_small_list(t_e *e);
+void					tri_aa(t_e *e);
+void					after_tri_aa(t_e *e);
 
 #endif

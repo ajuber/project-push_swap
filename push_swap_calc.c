@@ -103,6 +103,11 @@ void	push_swap_calc(t_e *e)
 	}
 	if (test_swap_a(e))
 		return ;
+	if (e->size_l <= 6)
+	{
+		tri_small_list(e);
+		return ;
+	}
 	pb(e);
 	if_display(e, 1);
 	e->str = ft_strjoin_free(e->str, e->str, "pb");

@@ -47,7 +47,7 @@ int		test_to_tri_a(t_e *e, int *nb_rot_rev, int comp, t_list_cir **tmp)
 
 	*nb_rot_rev = 1;
 	tmp1 = e->l_a->next;
-	max = e->l_a->n;
+	max = tmp1->n;
 	comp = tmp[0]->n;
 	tmp[0] = tmp[0]->next;
 	if (comp < max)

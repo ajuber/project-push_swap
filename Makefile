@@ -27,7 +27,9 @@ SRC_C=	main.c\
 		display_list.c\
 		test_a.c\
 		tri_a_and_b.c\
-		test_swap_a.c
+		test_swap_a.c\
+		tri_small_list.c\
+		tri_aa.c
 
 SRC_O=		$(SRC_C:.c=.o)
 
