@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:16:56 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/04 16:13:48 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/10 15:14:52 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct			s_e
 	char				*str;
 	int					v;
 	int					size_l;
+	int					j;
+	long				nb;
 }						t_e;
 
 t_list_cir				*ft_create_racine(void);
@@ -49,5 +51,7 @@ void					push_swap_calc(t_e *e);
 void					display_list(t_e *e, int n);
 int						test_a(t_e *e);
 void					tri_a_and_b(t_e *e);
+void					if_display(t_e *e, int n);
+int						test_swap_a(t_e *e);
 
 #endif

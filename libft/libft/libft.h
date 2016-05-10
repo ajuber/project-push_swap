@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 14:39:07 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/04 19:22:58 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/06 17:00:05 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char				*ft_strjoin_size(char const *s1, char const *s2,
 					size_t size1, size_t size2);
 char				*ft_strdup_free(char *str, const char *s1);
 char				*ft_strjoin_free(char *str, char const *s1, char const *s2);
-int					ft_atoi_long(const char *str);
+long				ft_atoi_long(const char *str);
+int					ft_printf(const char *format, ...);
 
 #endif

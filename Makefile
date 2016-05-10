@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/05 14:28:27 by ajubert           #+#    #+#              #
-#    Updated: 2016/05/04 19:45:13 by ajubert          ###   ########.fr        #
+#    Updated: 2016/05/10 15:16:03 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC_C=	main.c\
 		push_swap_calc.c\
 		display_list.c\
 		test_a.c\
-		tri_a_and_b.c
+		tri_a_and_b.c\
+		test_swap_a.c
 
 SRC_O=		$(SRC_C:.c=.o)
 

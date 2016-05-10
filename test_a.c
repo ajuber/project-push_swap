@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 15:15:08 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/04 16:30:10 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/10 15:36:06 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 		while (nb_rot-- > 0)
 		{
 			ra(e);
-			if (e->v)
-				display_list(e, 1);
+			if_display(e, 1);
 			if (nb_rot + 1 != comp)
 				e->str = ft_strjoin_free(e->str, e->str, " ");
 			e->str = ft_strjoin_free(e->str, e->str, "ra");
@@ -33,8 +32,7 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 		while (nb_rot_rev-- > 0)
 		{
 			rra(e);
-			if (e->v)
-				display_list(e, 1);
+			if_display(e, 1);
 			if (nb_rot_rev + 1 != comp)
 				e->str = ft_strjoin_free(e->str, e->str, " ");
 			e->str = ft_strjoin_free(e->str, e->str, "rra");
@@ -42,20 +40,27 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 	}
 }
 
-void	test_to_tri_a(t_e *e, int *nb_rot_rev, int comp, t_list_cir **tmp)
+int		test_to_tri_a(t_e *e, int *nb_rot_rev, int comp, t_list_cir **tmp)
 {
-	int max;
+	int			max;
+	t_list_cir	*tmp1;
 
 	*nb_rot_rev = 1;
-	max = comp;
+	tmp1 = e->l_a->next;
+	max = e->l_a->n;
 	comp = tmp[0]->n;
-	*tmp = tmp[0]->next;
-	while (tmp[0] != e->l_a && comp < tmp[0]->n && tmp[0]->n < max)
+	tmp[0] = tmp[0]->next;
+	if (comp < max)
 	{
-		comp = tmp[0]->n;
-		tmp[0] = tmp[0]->next;
-		*nb_rot_rev += 1;
+		while (tmp[0] != e->l_a && comp < tmp[0]->n && tmp[0]->n < max)
+		{
+			comp = tmp[0]->n;
+			tmp[0] = tmp[0]->next;
+			*nb_rot_rev += 1;
+		}
+		return (1);
 	}
+	return (0);
 }
 
 int		test_a(t_e *e)
@@ -77,7 +82,8 @@ int		test_a(t_e *e)
 	}
 	if (tmp == e->l_a)
 		return (1);
-	test_to_tri_a(e, &nb_rot_rev, comp, &tmp);
+	if (!test_to_tri_a(e, &nb_rot_rev, comp, &tmp))
+		return (0);
 	if (tmp == e->l_a)
 	{
 		tri_a(e, nb_rot, nb_rot_rev, comp);

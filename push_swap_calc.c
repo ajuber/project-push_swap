@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 05:50:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/04 16:43:30 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/10 16:04:01 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void	tri_b(t_e *e)
 				&& tmp_b_next->n > tmp_b_previous->n))
 		{
 			pb(e);
-			if (e->v)
-				display_list(e, 1);
+			if_display(e, 1);
 			e->str = ft_strjoin_free(e->str, e->str, " pb");
 			tmp_a = e->l_a->next;
 		}
@@ -58,18 +57,15 @@ void	push_swap_calc_under(t_e *e)
 	if (tmp_a->n > tmp_b_next->n)
 	{
 		pb(e);
-		if (e->v)
-			display_list(e, 1);
+		if_display(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " pb");
 	}
 	else
 	{
 		pb(e);
-		if (e->v)
-			display_list(e, 1);
+		if_display(e, 1);
 		rb(e);
-		if (e->v)
-			display_list(e, 1);
+		if_display(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " pb rb");
 	}
 }
@@ -79,8 +75,7 @@ void	after_tri_b(t_e *e, t_list_cir *tmp_b_next, t_list_cir *tmp_b_previous)
 	while (tmp_b_next->n < tmp_b_previous->n)
 	{
 		rb(e);
-		if (e->v)
-			display_list(e, 1);
+		if_display(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " rb");
 		tmp_b_next = e->l_b->next;
 		tmp_b_previous = e->l_b->previous;
@@ -88,8 +83,7 @@ void	after_tri_b(t_e *e, t_list_cir *tmp_b_next, t_list_cir *tmp_b_previous)
 	while (tmp_b_next != e->l_b)
 	{
 		pa(e);
-		if (e->v)
-			display_list(e, 1);
+		if_display(e, 1);
 		e->str = ft_strjoin_free(e->str, e->str, " pa");
 		tmp_b_next = e->l_b->next;
 	}
@@ -107,9 +101,10 @@ void	push_swap_calc(t_e *e)
 		tri_a_and_b(e);
 		return ;
 	}
+	if (test_swap_a(e))
+		return ;
 	pb(e);
-	if (e->v)
-		display_list(e, 1);
+	if_display(e, 1);
 	e->str = ft_strjoin_free(e->str, e->str, "pb");
 	push_swap_calc_under(e);
 	tri_b(e);

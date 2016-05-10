@@ -6,45 +6,47 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:26:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/04 19:23:33 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/06 17:37:30 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void			ft_option(char **argv, t_e *e)
+int				ft_option(char **argv, t_e *e, int *i, int argc)
 {
 	if (ft_strcmp("-v", argv[1]) == 0)
 		e->v = 1;
 	else
 		e->v = 0;
+	*i = 1 + e->v;
+	if (*i == argc)
+		return (0);
+	return (1);
 }
 
 t_list_cir		*ft_create_list(char **argv, t_e *e, int argc)
 {
 	int		i;
-	long	nb;
-	int		j;
 
-	ft_option(argv, e);
-	i = 1 + e->v;
+	if (!(ft_option(argv, e, &i, argc)))
+		return (NULL);
 	if (!(e->l_a = ft_create_racine()))
 		return (NULL);
 	while (i < argc)
 	{
-		j = 0;
-		if (argv[i][j] == '-')
-			j++;
-		while (argv[i][j])
+		e->j = 0;
+		if (argv[i][e->j] == '-')
+			e->j++;
+		while (argv[i][e->j])
 		{
-			if (!(ft_isdigit(argv[i][j])))
+			if (!(ft_isdigit(argv[i][e->j])))
 				return (NULL);
-			j++;
+			e->j++;
 		}
-		nb = ft_atoi_long(argv[i]);
-		if (nb < -2147483648 || nb > 2147483647)
+		e->nb = ft_atoi_long(argv[i]);
+		if (e->nb < -2147483648 || e->nb > 2147483647)
 			return (NULL);
-		push_back_list(e->l_a, nb);
+		push_back_list(e->l_a, e->nb);
 		i++;
 	}
 	e->size_l = i - 1 - e->v;
@@ -71,13 +73,25 @@ int				ft_check_doublon(t_e *e)
 	return (1);
 }
 
+void			main_next(t_e *e)
+{
+	e->str = ft_strdup("\0");
+	push_swap_calc(e);
+	if (e->v)
+		ft_putendl("Operation effectue");
+	ft_putendl(e->str);
+	ft_free_list_cir(e->l_a);
+	ft_free_list_cir(e->l_b);
+	ft_memdel((void **)&e->str);
+}
+
 int				main(int argc, char **argv)
 {
 	t_e		e;
 
 	if (argc == 1)
 	{
-		ft_putendl_fd("", 2);
+		ft_putstr_fd("", 2);
 		return (-1);
 	}
 	e.l_a = ft_create_list(argv, &e, argc);
@@ -91,16 +105,8 @@ int				main(int argc, char **argv)
 	{
 		ft_putendl("\nListe debut\n");
 		display_list(&e, 1);
+		ft_putendl("Etat liste pendant les operation\n");
 	}
-	e.str = ft_strdup("\0");
-	push_swap_calc(&e);
-	if (e.v)
-		ft_putendl("Operation effectue et liste de fin");
-	ft_putendl(e.str);
-	if (e.v)
-		display_list(&e, 0);
-	ft_free_list_cir(e.l_a);
-	ft_free_list_cir(e.l_b);
-	ft_memdel((void **)&e.str);
+	main_next(&e);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 07:01:21 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/04 16:14:50 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/06 15:22:32 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ void	display_list(t_e *e, int n)
 		ft_putstr("\n\n");
 	else
 		ft_putchar('\n');
+}
+
+void	if_display(t_e *e, int n)
+{
+	if (e->v)
+		display_list(e, n);
 }
