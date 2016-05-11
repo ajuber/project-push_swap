@@ -6,7 +6,7 @@
 #    By: ajubert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/05 14:28:27 by ajubert           #+#    #+#              #
-#    Updated: 2016/05/10 15:16:03 by ajubert          ###   ########.fr        #
+#    Updated: 2016/05/11 14:54:10 by ajubert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC_C=	main.c\
 		tri_a_and_b.c\
 		test_swap_a.c\
 		tri_small_list.c\
-		tri_aa.c
+		tri_aa.c\
+		what_ratation.c
 
 SRC_O=		$(SRC_C:.c=.o)
 

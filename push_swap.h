@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:16:56 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/10 15:14:52 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/11 18:17:06 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ typedef struct			s_e
 	char				*str;
 	int					v;
 	int					size_l;
+	int					size_lb;
 	int					j;
 	long				nb;
+	int					rot;
+	int					rev_rot;
 }						t_e;
 
 t_list_cir				*ft_create_racine(void);
@@ -50,12 +53,21 @@ void					rrr(t_e *e);
 void					push_swap_calc(t_e *e);
 void					display_list(t_e *e, int n);
 int						test_a(t_e *e);
-void					tri_a_and_b(t_e *e);
+int						tri_a_and_b(t_e *e);
 void					tri_b_and_a(t_e *e);
 void					if_display(t_e *e, int n);
 int						test_swap_a(t_e *e);
 void					tri_small_list(t_e *e);
+int						test_small_list(t_e *e);
 void					tri_aa(t_e *e);
 void					after_tri_aa(t_e *e);
+int						what_ratation(t_list_cir *tmp_a, t_list_cir *tmp_b_next,
+		t_list_cir *tmp_b_previous);
+int						what_ratation2(t_list_cir *tmp_b,
+		t_list_cir *tmp_a_next, t_list_cir *tmp_a_previous);
+int						what_ratation2a(t_list_cir *tmp_a_next,
+		t_list_cir *tmp_a_previous);
+int						what_ratation2b(t_e *e, t_list_cir *tmp_b_next,
+		t_list_cir *tmp_b_previous);
 
 #endif

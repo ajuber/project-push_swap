@@ -6,18 +6,40 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 05:50:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/10 16:04:01 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/11 17:53:53 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tri_aa_else(t_e *e)
+void	tri_aa_else(t_e *e, t_list_cir *tmp_b, t_list_cir *tmp_a_next,
+		t_list_cir *tmp_a_previous)
 {
-	ra(e);
-	if (e->v)
-		display_list(e, 1);
-	e->str = ft_strjoin_free(e->str, e->str, " ra");
+	int		rot;
+	int		rev_rot;
+	int		test;
+
+	test = 1;
+	rot = what_ratation2(tmp_b, tmp_a_next, tmp_a_previous);
+	rev_rot = e->size_l - rot;
+	if (rot <= rev_rot)
+		while (rot > 0 || test)
+		{
+			test = 0;
+			rot--;
+			ra(e);
+			if_display(e, 1);
+			e->str = ft_strjoin_free(e->str, e->str, "ra ");
+		}
+	else
+		while (rev_rot > 0 || test)
+		{
+			test = 0;
+			rev_rot--;
+			rra(e);
+			if_display(e, 1);
+			e->str = ft_strjoin_free(e->str, e->str, "rra ");
+		}
 }
 
 void	tri_aa(t_e *e)
@@ -38,12 +60,13 @@ void	tri_aa(t_e *e)
 				&& tmp_a_next->n < tmp_a_previous->n))
 		{
 			pa(e);
+			e->size_l++;
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, " pa");
+			e->str = ft_strjoin_free(e->str, e->str, "pa ");
 			tmp_b = e->l_b->next;
 		}
 		else
-			tri_aa_else(e);
+			tri_aa_else(e, tmp_b, tmp_a_next, tmp_a_previous);
 	}
 }
 
@@ -54,11 +77,22 @@ void	after_tri_aa(t_e *e)
 
 	tmp_a_next = e->l_a->next;
 	tmp_a_previous = e->l_a->previous;
+	e->rot = what_ratation2a(tmp_a_next, tmp_a_previous);
+	e->rev_rot = e->size_l - e->rot;
 	while (tmp_a_next->n > tmp_a_previous->n)
 	{
-		ra(e);
-		if_display(e, 1);
-		e->str = ft_strjoin_free(e->str, e->str, " ra");
+		if (e->rot <= e->rev_rot)
+		{
+			ra(e);
+			if_display(e, 1);
+			e->str = ft_strjoin_free(e->str, e->str, "ra ");
+		}
+		else
+		{
+			rra(e);
+			if_display(e, 1);
+			e->str = ft_strjoin_free(e->str, e->str, "rra ");
+		}
 		tmp_a_next = e->l_a->next;
 		tmp_a_previous = e->l_a->previous;
 	}

@@ -6,11 +6,11 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 01:00:09 by ajubert           #+#    #+#             */
-/*   Updated: 2016/04/24 01:03:05 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/11 15:10:38 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	next_atoi(const char *str, int i, int *nombre, long *res)
+void	next_atoi_long(const char *str, int i, int *nombre, long *res)
 {
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -43,7 +43,7 @@ long	ft_atoi_long(const char *str)
 			nombre = 0;
 			i++;
 		}
-		next_atoi(str, i, &nombre, &res);
+		next_atoi_long(str, i, &nombre, &res);
 		i++;
 	}
 	return (res * indice);
