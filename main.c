@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:26:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/06 17:37:30 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/08 13:21:02 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int				ft_option(char **argv, t_e *e, int *i, int argc)
 	*i = 1 + e->v;
 	if (*i == argc)
 		return (0);
+	if (!(e->l_a = ft_create_racine()))
+		return (0);
 	return (1);
 }
 
@@ -30,13 +32,13 @@ t_list_cir		*ft_create_list(char **argv, t_e *e, int argc)
 
 	if (!(ft_option(argv, e, &i, argc)))
 		return (NULL);
-	if (!(e->l_a = ft_create_racine()))
-		return (NULL);
 	while (i < argc)
 	{
 		e->j = 0;
 		if (argv[i][e->j] == '-')
 			e->j++;
+		if (argv[i][e->j] == '\0')
+			return (NULL);
 		while (argv[i][e->j])
 		{
 			if (!(ft_isdigit(argv[i][e->j])))
@@ -90,10 +92,7 @@ int				main(int argc, char **argv)
 	t_e		e;
 
 	if (argc == 1)
-	{
-		ft_putstr_fd("", 2);
-		return (-1);
-	}
+		return (0);
 	e.l_a = ft_create_list(argv, &e, argc);
 	e.l_b = ft_create_racine();
 	if (e.l_a == NULL || e.l_b == NULL || (!(ft_check_doublon(&e))))

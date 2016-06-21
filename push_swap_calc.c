@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 05:50:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/11 23:02:03 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/05/12 00:03:11 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	rot_to_min(t_e *e)
 
 void	search_min(t_e *e)
 {
-	t_list_cir *tmp;
-	t_list_cir *tmp_min;
+	t_list_cir	*tmp;
+	t_list_cir	*tmp_min;
 	int			i;
 
 	e->rot = 0;
