@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 05:50:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/11 17:53:53 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/22 18:20:39 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	tri_aa_else(t_e *e, t_list_cir *tmp_b, t_list_cir *tmp_a_next,
 			test = 0;
 			rot--;
 			ra(e);
+			ft_putendl("ra");
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "ra ");
 		}
 	else
 		while (rev_rot > 0 || test)
@@ -37,8 +37,8 @@ void	tri_aa_else(t_e *e, t_list_cir *tmp_b, t_list_cir *tmp_a_next,
 			test = 0;
 			rev_rot--;
 			rra(e);
+			ft_putendl("rra");
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "rra ");
 		}
 }
 
@@ -60,9 +60,9 @@ void	tri_aa(t_e *e)
 				&& tmp_a_next->n < tmp_a_previous->n))
 		{
 			pa(e);
+			ft_putendl("pa");
 			e->size_l++;
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "pa ");
 			tmp_b = e->l_b->next;
 		}
 		else
@@ -84,14 +84,14 @@ void	after_tri_aa(t_e *e)
 		if (e->rot <= e->rev_rot)
 		{
 			ra(e);
+			ft_putendl("ra");
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "ra ");
 		}
 		else
 		{
 			rra(e);
+			ft_putendl("rra");
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "rra ");
 		}
 		tmp_a_next = e->l_a->next;
 		tmp_a_previous = e->l_a->previous;

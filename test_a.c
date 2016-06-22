@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 15:15:08 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/10 15:36:06 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/22 18:23:26 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 		while (nb_rot-- > 0)
 		{
 			ra(e);
+			ft_putendl("ra");
 			if_display(e, 1);
-			if (nb_rot + 1 != comp)
-				e->str = ft_strjoin_free(e->str, e->str, " ");
-			e->str = ft_strjoin_free(e->str, e->str, "ra");
 		}
 	}
 	else
@@ -32,10 +30,8 @@ void	tri_a(t_e *e, int nb_rot, int nb_rot_rev, int comp)
 		while (nb_rot_rev-- > 0)
 		{
 			rra(e);
+			ft_putendl("rra");
 			if_display(e, 1);
-			if (nb_rot_rev + 1 != comp)
-				e->str = ft_strjoin_free(e->str, e->str, " ");
-			e->str = ft_strjoin_free(e->str, e->str, "rra");
 		}
 	}
 }

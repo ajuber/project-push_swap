@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 18:09:36 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/11 18:15:06 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/22 18:09:50 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,13 @@ void	tri_small_list(t_e *e)
 	while (i < e->size_l - 3)
 	{
 		pb(e);
-		if_display(e, 1);
 		i++;
-		e->str = ft_strjoin_free(e->str, e->str, "pb ");
+		ft_putendl("pb");
+		if_display(e, 1);
 	}
 	if (e->size_l == 6)
 		tri_b_and_a(e);
-	if (tri_a_and_b(e))
-		e->str = ft_strjoin_free(e->str, e->str, " ");
 	e->size_l = 3;
 	tri_aa(e);
 	after_tri_aa(e);
-	e->str[ft_strlen(e->str) - 1] = '\0';
 }

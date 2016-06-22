@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 05:50:31 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/12 00:03:11 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/22 18:38:15 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	rot_to_min(t_e *e)
 		{
 			e->rot--;
 			ra(e);
+			ft_putendl("ra");
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "ra ");
 		}
 	}
 	else
@@ -30,8 +30,8 @@ void	rot_to_min(t_e *e)
 		{
 			e->rev_rot--;
 			rra(e);
+			ft_putendl("rra");
 			if_display(e, 1);
-			e->str = ft_strjoin_free(e->str, e->str, "rra ");
 		}
 	}
 }
@@ -71,16 +71,15 @@ void	push_swap_calc(t_e *e)
 		search_min(e);
 		pb(e);
 		e->size_l--;
+		ft_putendl("pb");
 		if_display(e, 1);
-		e->str = ft_strjoin_free(e->str, e->str, "pb ");
 	}
 	tmp = e->l_b->next;
 	while (tmp != e->l_b)
 	{
 		pa(e);
+		ft_putendl("pa");
 		if_display(e, 1);
-		e->str = ft_strjoin_free(e->str, e->str, "pa ");
 		tmp = e->l_b->next;
 	}
-	e->str[ft_strlen(e->str) - 1] = '\0';
 }

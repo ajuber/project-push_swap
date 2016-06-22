@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 23:26:40 by ajubert           #+#    #+#             */
-/*   Updated: 2016/06/22 17:48:11 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/22 18:49:45 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,6 @@ int				main(int argc, char **argv)
 	if (e.l_a == NULL || e.l_b == NULL || (!(ft_check_doublon1(&e))))
 	{
 		ft_putendl_fd("Error", 2);
-		ft_free_list_cir(e.l_a);
-		ft_free_list_cir(e.l_b);
 		return (-1);
 	}
 	if (!(checker_calc(&e)))

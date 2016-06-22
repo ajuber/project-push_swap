@@ -6,7 +6,7 @@
 /*   By: ajubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 14:46:26 by ajubert           #+#    #+#             */
-/*   Updated: 2016/05/11 18:07:59 by ajubert          ###   ########.fr       */
+/*   Updated: 2016/06/22 19:22:48 by ajubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 void	if_test_rev(t_e *e)
 {
 	rra(e);
+	ft_putendl("rra");
 	if_display(e, 1);
 	rra(e);
+	ft_putendl("rra");
 	if_display(e, 1);
 	sa(e);
+	ft_putendl("sa");
 	if_display(e, 1);
 	ra(e);
+	ft_putendl("ra");
 	if_display(e, 1);
 	ra(e);
+	ft_putendl("ra");
 	if_display(e, 1);
 }
 
@@ -42,7 +47,6 @@ int		test_revswap_a(t_e *e, t_list_cir *tmp, int comp)
 	if (tmp == e->l_a)
 	{
 		if_test_rev(e);
-		e->str = ft_strjoin_free(e->str, e->str, "rra rra sa ra ra");
 		return (1);
 	}
 	return (0);
@@ -51,7 +55,7 @@ int		test_revswap_a(t_e *e, t_list_cir *tmp, int comp)
 void	test_swap_a_next(t_e *e)
 {
 	sa(e);
-	e->str = ft_strjoin_free(e->str, e->str, "sa");
+	ft_putendl("sa");
 	if_display(e, 1);
 }
 
